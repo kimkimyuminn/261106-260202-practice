@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 # 이 값들을 바꾸면 자기소개 내용을 손쉽게 수정할 수 있습니다.
-PROFILE_NAME = "이름을 입력하세요"
+PROFILE_NAME = "김유민"
 PROFILE_TAGLINE = "좋아하는 것을 발견하고, 경험 속에서 배우는 사람"
 PROFILE_INTRO = (
     "나를 설명하는 문장을 적어보세요. 관심사와 성격, 요즘 중요하게 생각하는 것을 "
@@ -15,17 +15,17 @@ PROFILE_INTRO = (
 )
 
 PROFILE_DETAILS = [
-    ("관심 키워드", "관심 있는 주제를 적어보세요"),
-    ("나를 설명하는 단어", "나를 잘 나타내는 단어를 적어보세요"),
-    ("요즘의 관심사", "요즘 자주 생각하거나 찾아보는 것을 적어보세요"),
+    ("관심 키워드", "과외 수업 준비하기"),
+    ("나를 설명하는 단어", "낙천적 · 긍정"),
+    ("요즘의 관심사", "드라마 보기"),
 ]
 
 FAVORITES = [
-    ("드라마", [("드라마 제목", "좋아하는 이유나 기억에 남는 장면")]),
-    ("영화", [("영화 제목", "좋아하는 이유나 오래 남은 대사")]),
-    ("책", [("책 제목 · 작가", "인상 깊었던 문장이나 읽고 난 생각")]),
-    ("음악", [("곡 또는 아티스트", "이 음악을 즐겨 듣는 순간")]),
-    ("음식", [("좋아하는 음식", "좋아하게 된 계기나 추천하는 조합")]),
+    ("드라마", [("가금채", "좋아하는 이유나 기억에 남는 장면")]),
+    ("영화", [("인생은 아름다워", "좋아하는 이유나 오래 남은 대사")]),
+    ("책", [("톰 소여의 모험", "인상 깊었던 문장이나 읽고 난 생각")]),
+    ("음악", [("토리켈리의 25th", "이 음악을 즐겨 듣는 순간")]),
+    ("음식", [("삼계탕", "좋아하게 된 계기나 추천하는 조합")]),
 ]
 
 SCHOOL_ACTIVITIES = [
@@ -135,19 +135,51 @@ st.markdown(
     }
 
     div[data-baseweb="tab-list"] {
-        gap: 1.5rem;
-        border-bottom: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.7rem;
+        border-bottom: 0;
+        margin: 1.75rem 0 2rem;
     }
 
     button[data-baseweb="tab"] {
-        color: var(--muted);
-        font-size: 0.98rem;
-        padding: 0.8rem 0.15rem;
+        min-height: 3.8rem;
+        justify-content: flex-start;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        color: var(--ink);
+        font-size: 1rem;
+        font-weight: 650;
+        padding: 0.9rem 1rem;
+        transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+
+    button[data-baseweb="tab"]::before {
+        color: var(--coral);
+        font-size: 0.72rem;
+        font-weight: 700;
+        margin-right: 0.7rem;
+    }
+
+    button[data-baseweb="tab"]:nth-child(1)::before { content: "01"; }
+    button[data-baseweb="tab"]:nth-child(2)::before { content: "02"; }
+    button[data-baseweb="tab"]:nth-child(3)::before { content: "03"; }
+    button[data-baseweb="tab"]:nth-child(4)::before { content: "04"; }
+
+    button[data-baseweb="tab"]:hover {
+        background: var(--white);
+        border-color: var(--green);
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
-        color: var(--ink);
-        border-bottom-color: var(--green);
+        background: var(--green);
+        border-color: var(--green);
+        color: var(--white);
+    }
+
+    button[data-baseweb="tab"][aria-selected="true"]::before {
+        color: #e8c9b9;
     }
 
     [data-testid="stCaptionContainer"] { color: var(--muted); }
@@ -155,8 +187,16 @@ st.markdown(
     @media (max-width: 700px) {
         .hero { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 1rem; }
         .hero h1 { font-size: 2.25rem; }
-        div[data-baseweb="tab-list"] { gap: 0.7rem; }
-        button[data-baseweb="tab"] { font-size: 0.88rem; }
+        div[data-baseweb="tab-list"] {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.55rem;
+        }
+        button[data-baseweb="tab"] {
+            min-height: 3.4rem;
+            font-size: 0.88rem;
+            padding: 0.7rem;
+        }
+        button[data-baseweb="tab"]::before { margin-right: 0.45rem; }
     }
     </style>
     """,
